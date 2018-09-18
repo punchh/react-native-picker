@@ -149,7 +149,7 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
     }
 
     @ReactMethod
-    public void _init(ReadableMap options) {
+    public void _init(ReadableMap options, Promise promise) {
         this.promise = promise;
         Activity activity = getCurrentActivity();
         if (activity != null && options.hasKey(PICKER_DATA)) {
@@ -342,7 +342,6 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
                         @Override
                         public void onSelected(ArrayList<ReturnData> selectedList) {
                             returnData = selectedList;
-                            // commonEvent(EVENT_KEY_SELECTED);
                         }
                     });
 
@@ -388,8 +387,8 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
                 pickerLayout.setBackgroundColor(argb(colors[3], colors[0], colors[1], colors[2]));
             }
 
-            int height = barViewHeight + pickerViewHeight;
-            // if (dialog == null) {
+                int height = barViewHeight + pickerViewHeight;
+
                 dialog = new Dialog(activity, R.style.Dialog_Full_Screen);
                 dialog.setContentView(view);
                 WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
@@ -412,10 +411,6 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
                     layoutParams.gravity = Gravity.BOTTOM;
                     window.setAttributes(layoutParams);
                 }
-            // } else {
-            //     dialog.dismiss();
-            //     dialog.setContentView(view);
-            // }
         }
     }
 
@@ -534,9 +529,6 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
                            String eventName,
                            @Nullable WritableMap params) {
         promise.resolve(params);
-        // reactContext
-        //         .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-        //         .emit(eventName, params);
     }
 
     @Override
