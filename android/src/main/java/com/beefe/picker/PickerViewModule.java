@@ -6,8 +6,9 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -187,9 +188,9 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
 
             if (options.hasKey(PICKER_TOOL_BAR_TEXT_SIZE)) {
                 int toolBarTextSize = options.getInt(PICKER_TOOL_BAR_TEXT_SIZE);
-                cancelTV.setTextSize(toolBarTextSize);
-                titleTV.setTextSize(toolBarTextSize);
-                confirmTV.setTextSize(toolBarTextSize);
+                cancelTV.setTextSize(TypedValue.COMPLEX_UNIT_DIP, toolBarTextSize);
+                titleTV.setTextSize(TypedValue.COMPLEX_UNIT_DIP,toolBarTextSize);
+                confirmTV.setTextSize(TypedValue.COMPLEX_UNIT_DIP,toolBarTextSize);
             }
 
             if (options.hasKey(PICKER_CONFIRM_BTN_TEXT)) {
